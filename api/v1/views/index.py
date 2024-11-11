@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+""" Module for the index route of the API.
+This module contains the route that returns the status of the API.
+"""
 from api.v1.views import app_views
 from flask import jsonify
 
