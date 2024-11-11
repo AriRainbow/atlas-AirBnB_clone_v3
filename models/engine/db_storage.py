@@ -82,9 +82,12 @@ class DBStorage:
         return None
     
     def count(self, cls=None):
+        """Returns the count of objects for a class or all objects if no class is provided"""
         if cls:
+            # If a class is specified and it is valid (exists in `classes` dictionary)
             if cls in classes.values():
-                return self.__session.query(cls).count()
-            return 0
+                return self.__session.query(cls).count()  # Count the objects of the given class
+            return 0  # Return 0 if the class is not valid
         else:
+            # If no class is specified, return the total count of all objects across all classes
             return sum(self.__session.query(cls).count() for cls in classes.values())
