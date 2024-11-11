@@ -17,9 +17,11 @@ def teardown(exception):
     """Close the storage session after each request"""
     storage.close()
 
+
 @app.errorhandler(404)
 def fnf(error):
     return jsonify({"error": "Not found"}), 404
+
 
 if __name__ == "__main__":
     host = os.getenv('HBNB_API_HOST', '0.0.0.0')
