@@ -19,7 +19,7 @@ def teardown(exception):
 
 @app.errorhandler(404)
 def fnf(error):
-    return jsonify({"error": "not found"}), 404
+    return jsonify({"error": "Not found"}), 404
 
 if __name__ == "__main__":
     host = os.getenv('HBNB_API_HOST', '0.0.0.0')
