@@ -15,7 +15,11 @@ class City(BaseModel, Base):
         state_id = Column(String(60), ForeignKey('states.id'), nullable=False)
         name = Column(String(128), nullable=False)
         # Added cascade option to manage deletion of related objects
-        places = relationship("Place", backref="cities", cascade="all, delete, delete-orphan")
+        places = relationship(
+            "Place",
+            backref="cities",
+            cascade="all, delete, delete-orphan"
+        )
     else:
         state_id = ""
         name = ""
