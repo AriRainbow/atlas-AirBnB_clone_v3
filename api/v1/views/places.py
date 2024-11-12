@@ -44,7 +44,7 @@ def create_place(city_id):
     if not city:
         abort(404)
     
-    if not request.is_json():
+    if not request.get_json():
         return make_response(jsonify({"error": "Not a JSON"}), 400)
     
     data = request.get_json()
