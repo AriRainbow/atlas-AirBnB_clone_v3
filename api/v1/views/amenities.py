@@ -48,7 +48,7 @@ def create_amenity():
         return make_response(jsonify({"error": "Not a JSON"}), 400)
     if 'name' not in request.get_json():
         return make_response(jsonify({"error": "Missing name"}), 400)
-    
+
     data = request.get_json()
     new_amenity = Amenity(**data)
     storage.new(new_amenity)
@@ -56,7 +56,11 @@ def create_amenity():
     return jsonify(new_amenity.to_dict()), 201
 
 
-@app_views.route('/amenities/<amenity_id>', methods=['PUT'], strict_slashes=False)
+@app_views.route(
+    '/amenities/<amenity_id>',
+    methods=['PUT'],
+    strict_slashes=False
+)
 def update_amenity(amenity_id):
     """Updates an Amenity object"""
     amenity = storage.get(Amenity, amenity_id)
