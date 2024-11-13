@@ -76,6 +76,17 @@ class FileStorage:
         return None
 
     def count(self, cls=None):
+        """Returns the number of objects in storage matching the given class.
+    
+        If no class is specified, returns the total number of objects in storage.
+    
+        Args:
+            cls (type, optional): The class type to count instances of.
+            Defaults to None.
+
+        Returns:
+            int: The count of objects in storage.
+        """
         if cls:
             return len(self.all(cls))
         return len(self.__objects)
