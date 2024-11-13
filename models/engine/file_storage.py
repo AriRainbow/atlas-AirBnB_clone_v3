@@ -70,6 +70,15 @@ class FileStorage:
         self.reload()
 
     def get(self, cls, id):
+        """Retrieves an object from storage based on class and id.
+
+        Args:
+            cls (type): The class type to search for.
+            id (str): The ID of the object to retrieve.
+
+        Returns:
+            object: The object if found, or None if not found.
+        """
         if cls in classes.values():
             key = "{}.{}".format(cls.__name__, id)
             return self.__objects.get(key)
